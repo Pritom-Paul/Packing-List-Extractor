@@ -1,0 +1,16 @@
+.venv
+
+# Ignore Python compiled files
+__pycache__/
+*.pyc
+
+# Ignore environment files
+.env
+venv/
+packing_list_env/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+.xls#
