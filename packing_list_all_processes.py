@@ -269,6 +269,20 @@ def run_script_3(excel_path):
                                     if po_candidate and str(po_candidate).strip():
                                         po_number = str(po_candidate).strip()
                                         print(f"*** FOUND PO NUMBER: {po_number} ***")
+                                    # Format PO number: if starts with "IT" or "OT" and doesn't have "-" right after
+                                    if (po_number.startswith(('IT', 'OT')) and 
+                                        not (len(po_number) > 2 and po_number[2] == '-')):
+                                        
+                                        # Remove everything after existing "-" if present
+                                        if '-' in po_number:
+                                            po_number = po_number.split('-')[0]
+                                        
+                                        # Insert "-" after 2 characters
+                                        if len(po_number) > 2:
+                                            po_number = po_number[:2] + "-" + po_number[2:]
+                                        
+                                    print(f"*** FORMATTED PO NUMBER: {po_number} ***")
+
                         
                         # Find column indices for cartons, pieces, and total gross weight
                         if ('# CARTONS' in str(row_values) and 
